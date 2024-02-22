@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
+import Playlist from "./Playlist";
+
+import { Box, Typography } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Box
+        sx={{
+          border: "1px solid black",
+          minHeight: "60px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{
+            textAlign: "center",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          JAMMING
+        </Typography>
+      </Box>
+      <SearchBar />
+      <Box
+        sx={{
+          columnGap: "40px",
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+          marginRight: "75px",
+        }}
+      >
+        <SearchResults />
+        <Playlist />
+      </Box>
+    </>
   );
 }
 
