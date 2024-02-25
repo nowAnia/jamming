@@ -1,5 +1,5 @@
 import Paper from "@mui/material/Paper";
-import Track from "./Track";
+
 import {
   Alert,
   Box,
@@ -15,8 +15,9 @@ import {
   createPlaylist,
   getCurrentUser,
 } from "./api/client";
+import PlaylistTrack from "./PlaylistTrack";
 
-function Playlist({ playlist, onPlaylistCreated }) {
+function Playlist({ playlist, onPlaylistCreated, removeSongsFromPlaylist }) {
   const [title, setTitle] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -83,7 +84,13 @@ function Playlist({ playlist, onPlaylistCreated }) {
 
         <List sx={{ width: "100%" }}>
           {playlist.map((song) => (
-            <Track key={song.id} title={song.title} author={song.author} />
+            <PlaylistTrack
+              key={song.id}
+              songId={song.id}
+              title={song.title}
+              author={song.author}
+              removeSongsFromPlaylist={removeSongsFromPlaylist}
+            />
           ))}
         </List>
         <Button variant="contained" onClick={handleClick}>

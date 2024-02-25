@@ -1,11 +1,12 @@
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
-import AddIcon from "@mui/icons-material/Add";
 
-function Track({ title, author, songId, addSongToPlaylist }) {
+import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
+
+function PlaylistTrack({ title, author, songId, removeSongsFromPlaylist }) {
   const handleClick = () => {
-    addSongToPlaylist(songId);
+    removeSongsFromPlaylist(songId);
   };
   return (
     <ListItem
@@ -16,7 +17,7 @@ function Track({ title, author, songId, addSongToPlaylist }) {
       }}
       secondaryAction={
         <IconButton aria-label="comment" onClick={handleClick}>
-          <AddIcon />
+          <HorizontalRuleIcon />
         </IconButton>
       }
     >
@@ -25,4 +26,4 @@ function Track({ title, author, songId, addSongToPlaylist }) {
   );
 }
 
-export default Track;
+export default PlaylistTrack;

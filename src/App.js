@@ -35,6 +35,10 @@ function App() {
     }
   };
 
+  const removeSongsFromPlaylist = (id) => {
+    setNewPlaylist((prev) => prev.filter((song) => song.id !== id));
+  };
+
   const handleAuthorization = async () => {
     await spotifyAuthorization();
   };
@@ -98,6 +102,7 @@ function App() {
         <Playlist
           playlist={playlist}
           onPlaylistCreated={handlePlaylistCreated}
+          removeSongsFromPlaylist={removeSongsFromPlaylist}
         />
       </Box>
     </ThemeProvider>

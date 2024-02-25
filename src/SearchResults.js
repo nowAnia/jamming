@@ -1,7 +1,7 @@
 import List from "@mui/material/List";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import Track from "./Track";
+import SearchTrack from "./SearchTrack";
 
 function SearchResults({ songs, addSongToPlaylist }) {
   return (
@@ -9,7 +9,7 @@ function SearchResults({ songs, addSongToPlaylist }) {
       <Box sx={{ margin: 2 }}>
         <List>
           {songs.map((song) => (
-            <Track
+            <SearchTrack
               addSongToPlaylist={addSongToPlaylist}
               key={song.id}
               songId={song.id}
