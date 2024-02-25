@@ -1,6 +1,14 @@
 import Paper from "@mui/material/Paper";
 import Track from "./Track";
-import { Box, Button, List, TableRow, TextField } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  List,
+  Snackbar,
+  TableRow,
+  TextField,
+} from "@mui/material";
 import { useState } from "react";
 import {
   addSongsToPlaylist,
@@ -8,8 +16,9 @@ import {
   getCurrentUser,
 } from "./api/client";
 
-function Playlist({ playlist }) {
+function Playlist({ playlist, onPlaylistCreated }) {
   const [title, setTitle] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleChange = ({ target }) => {
     const newTitle = target.value;
@@ -29,7 +38,18 @@ function Playlist({ playlist }) {
     const currentUser = await getCurrentUser();
     const createdPlayList = await createPlaylist(currentUser.id, title);
     await addSongsToPlaylist(createdPlayList.id, tracksIds);
+    setTitle("");
+    onPlaylistCreated();
+    setOpen(true);
   };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <Paper
       sx={{
@@ -57,6 +77,7 @@ function Playlist({ playlist }) {
           id="standard-basic"
           label=""
           variant="standard"
+          value={title}
           onChange={handleChange}
         />
 
@@ -69,6 +90,21 @@ function Playlist({ playlist }) {
           Save to Spotify
         </Button>
       </Box>
+      <Snackbar
+        open={open}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          Playlist saved in Spotify!
+        </Alert>
+      </Snackbar>
     </Paper>
   );
 }

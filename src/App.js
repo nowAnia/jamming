@@ -55,6 +55,10 @@ function App() {
 
   const isAuthorized = getToken() !== null;
 
+  const handlePlaylistCreated = () => {
+    setNewPlaylist([]);
+  };
+
   return (
     <ThemeProvider theme={jammingTheme}>
       <CssBaseline />
@@ -91,7 +95,10 @@ function App() {
         }}
       >
         <SearchResults songs={songs} addSongToPlaylist={addSongToPlaylist} />
-        <Playlist playlist={playlist} />
+        <Playlist
+          playlist={playlist}
+          onPlaylistCreated={handlePlaylistCreated}
+        />
       </Box>
     </ThemeProvider>
   );
