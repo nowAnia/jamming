@@ -21,7 +21,7 @@ const base64encode = (input) => {
 const clientId = "f99c614dce7348e5972e9a1c6c19e27f";
 const redirectUri = "http://localhost:3000";
 
-const scope = "user-read-private user-read-email";
+const scope = "user-read-private user-read-email playlist-modify-private";
 const authUrl = new URL("https://accounts.spotify.com/authorize");
 
 export const spotifyAuthorization = async () => {
