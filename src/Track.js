@@ -3,7 +3,10 @@ import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 
-function Track({ title, author }) {
+function Track({ title, author, songId, addSongToPlaylist }) {
+  const handleClick = () => {
+    addSongToPlaylist(songId);
+  };
   return (
     <ListItem
       sx={{
@@ -12,7 +15,7 @@ function Track({ title, author }) {
         },
       }}
       secondaryAction={
-        <IconButton aria-label="comment">
+        <IconButton aria-label="comment" onClick={handleClick}>
           <AddIcon />
         </IconButton>
       }

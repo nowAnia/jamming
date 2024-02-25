@@ -1,8 +1,22 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
+import { useState } from "react";
 
-function SearchBar() {
+function SearchBar({ onSearch }) {
+  const [search, setSearch] = useState("");
+
+  function handleSearchClick() {
+    if (search.length > 0) {
+      onSearch(search);
+    }
+  }
+
+  function handleChange(event) {
+    const newsearch = event.target.value;
+    setSearch(newsearch);
+  }
+
   return (
     <Box
       sx={{
@@ -16,8 +30,16 @@ function SearchBar() {
         paddingBottom: "30px",
       }}
     >
-      <TextField id="outlined-basic" label="Enter song.." variant="outlined" />
-      <Button variant="contained">Search</Button>
+      <TextField
+        onChange={handleChange}
+        value={search}
+        id="outlined-basic"
+        label="Enter song.."
+        variant="outlined"
+      />
+      <Button onClick={handleSearchClick} variant="contained">
+        Search
+      </Button>
     </Box>
   );
 }
