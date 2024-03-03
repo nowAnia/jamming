@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+#JAMMING
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Summary
 
-## Available Scripts
+**_Jamming_** is designed to enable users to interact with the Spotify library, create
+personalized playlists, and seamlessly save them to their Spotify accounts. Leveraging React components and state
+management, users can search through Spotify's extensive music collection, add tracks to a custom playlist, and
+adjust the playlist contents as desired. The application utilizes requests with the
+[Spotify API](https://developer.spotify.com/documentation/web-api) to fetch relevant
+music data and provide real-time updates to the user interface which follows Material Design guidelines through
+[Material UI](https://mui.com/material-ui/getting-started/) library.
 
-In the project directory, you can run:
+## Development
 
-### `npm start`
+The app was created using `create-react-app` so in order to start it simply clone the repo. Then download
+dependencies with
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+... and start the app with `npm start`
 
-### `npm test`
+## App Design
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app is based on 4 pillars:
 
-### `npm run build`
+- MUI Components
+- OAuth2 flow
+- Web Storage API
+- Fetch requests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Screenshot
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### High-level Component structure
 
-### `npm run eject`
+The core of the application is `App` component which manages most of the state. It includes `SearchBar` that handles
+search logic. Once data was retrieved from Spotify API it will be presented in `SearchResults` with multiple
+`SearchTrack`. The user can then select a few songs and add them to playlist which will be displayed by `Playlist`
+component with multiple `PlaylistTrack`. In `Playlist` a user can also provide a name for the playlist and then save it
+to their's Spotify account.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[]
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### OAuth2 Flow
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In order for this App to work a user has to go through OAuth2 authorization using
+[Authorization Code](https://oauth.net/2/grant-types/authorization-code/) grant type
+extended with [PKCE](https://oauth.net/2/pkce/). Once the token is granted it is stored in local storage and used to
+fetch data from the API. The OAuth flow for **Jamming** is depicted in the diagram below:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[]
