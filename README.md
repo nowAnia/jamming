@@ -30,7 +30,8 @@ The app is based on 4 pillars:
 
 ### Screenshot
 
-[]
+![Screenshot from 2024-02-29 19-51-47](https://github.com/nowAnia/jamming/assets/152620390/d12575e7-e65f-4233-a5e1-f277fc1ed1e2)
+
 
 ### High-level Component structure
 
@@ -40,7 +41,8 @@ search logic. Once data was retrieved from Spotify API it will be presented in `
 component with multiple `PlaylistTrack`. In `Playlist` a user can also provide a name for the playlist and then save it
 to their's Spotify account.
 
-[]
+![jamming2 drawio(2)](https://github.com/nowAnia/jamming/assets/152620390/0175af97-0a01-4f75-a9f8-e56859b18c6c)
+
 
 ### OAuth2 Flow
 
@@ -49,4 +51,6 @@ In order for this App to work a user has to go through OAuth2 authorization usin
 extended with [PKCE](https://oauth.net/2/pkce/). Once the token is granted it is stored in local storage and used to
 fetch data from the API. The OAuth flow for **Jamming** is depicted in the diagram below:
 
-[]
+![JammingFlowChart drawio(1)](https://github.com/nowAnia/jamming/assets/152620390/9622e2f1-97c9-40fa-b29e-1c72374581b9)
+
+
